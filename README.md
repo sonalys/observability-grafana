@@ -1,7 +1,10 @@
 # ABOUT
 Container with binary spawning fake metrics to a local prometheus server
-# BUILD
+# REQUIREMENTS
+* Docker
+# INSTALL
 * [Grafana](https://grafana.com/docs/installation)
+# BUILD
 * docker build -t observabilidade -f container.Dockerfile .
 # RUN
 * docker run -it -p 9090:9090 observabilidade
