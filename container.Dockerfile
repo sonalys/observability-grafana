@@ -12,10 +12,6 @@ ENV GOROOT /usr/lib/go
 ENV GOPATH /go
 ENV PATH /go/bin:$PATH
 ENV GOOS="linux"
-# Build App
-COPY /app /app
-WORKDIR /app
-RUN make build
 # Install Grafana
 RUN wget -q https://dl.grafana.com/oss/release/grafana_6.4.1_amd64.deb
 RUN dpkg -i grafana_6.4.1_amd64.deb
@@ -31,4 +27,8 @@ RUN rm -rf prometheus-*
 # Configure Entrypoint script
 COPY run.sh /run.sh
 RUN chmod +x run.sh
+# Build App
+COPY /app /app
+WORKDIR /app
+RUN make build
 ENTRYPOINT [ "./run.sh" ]
