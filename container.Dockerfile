@@ -17,7 +17,6 @@ RUN wget -q https://dl.grafana.com/oss/release/grafana_6.4.1_amd64.deb
 RUN dpkg -i grafana_6.4.1_amd64.deb
 RUN rm -rf grafana*.deb
 # Install prometheus
-WORKDIR /
 RUN wget -q https://github.com/prometheus/prometheus/releases/download/v2.13.0/prometheus-2.13.0.linux-amd64.tar.gz
 RUN mkdir prometheus
 RUN tar xvfz prometheus-*.tar.gz
@@ -31,4 +30,5 @@ RUN chmod +x run.sh
 COPY /app /app
 WORKDIR /app
 RUN make build
+WORKDIR /
 ENTRYPOINT [ "./run.sh" ]

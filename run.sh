@@ -1,5 +1,5 @@
 #!/bin/bash
 ./prometheus/prometheus --config.file=/prometheus/config.yml &
-./app/run &
-service grafana-server start
+service grafana-server start &
+./app/app
 wait
