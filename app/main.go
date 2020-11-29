@@ -57,13 +57,12 @@ func recordRequests() {
 }
 
 func main() {
-	fmt.Println("Ligando server")
+	fmt.Println("Initializing Server")
 	http.Handle("/metrics", promhttp.Handler())
 
-	fmt.Println("Iniciando rotinas")
+	fmt.Println("Initializing Routines")
 	go recordRequests()
 
-	fmt.Println("Iniciando servidor")
 	if err := http.ListenAndServe(":8001", nil); err != nil {
 		return
 	}
